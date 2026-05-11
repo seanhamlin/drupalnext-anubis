@@ -23,8 +23,10 @@
         "drupal/core-composer-scaffold": "11.3.8",
         "drupal/core-project-message": "11.3.8",
         "drupal/core-recommended": "11.3.8",
+        "drupal/facet_bot_blocker": "^1.0",
         "drupal/lagoon_logs": "3.0.1",
         "drupal/mysql57": "1.0.0",
+        "drupal/search_api": "^1.40",
         "drush/drush": "13.7.2",
         "mglaman/composer-drupal-lenient": "2.0.0"
     },

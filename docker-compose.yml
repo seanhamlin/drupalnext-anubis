@@ -2,7 +2,7 @@ x-volumes:
   &default-volumes
     # Define all volumes you would like to have real-time mounted into the docker containers
     volumes:
-      - .:/app:delegated ### Local overrides to mount host filesystem. Automatically removed in CI and PROD.
+      - .:/app:delegated ### Local overrides to mount the host filesystem. Automatically removed in CI and PROD.
       - files:/app/web/sites/default/files
 
 x-environment:
@@ -30,7 +30,7 @@ volumes:
 
 services:
 
-  cli: # cli container, will be used for executing composer and any local commands (drush, drupal, etc.)
+  cli: # cli container will be used for executing composer and any local commands (drush, drupal, etc.)
     build:
       context: .
       dockerfile: lagoon/cli.dockerfile
@@ -66,9 +66,10 @@ services:
       # @see https://anubis.techaro.lol/docs/admin/installation/
       BIND: ":3000"
       COOKIE_EXPIRATION_TIME: "168h"
-      SERVE_ROBOTS_TXT: "true"
+      SERVE_ROBOTS_TXT: "false"
       # for production, use the following:
       #CUSTOM_REAL_IP_HEADER: "True-Client-IP"
+      #JWT_RESTRICTION_HEADER: "True-Client-IP"
       DIFFICULTY: "6"
       # Generate with `openssl rand -hex 32`:
       ED25519_PRIVATE_KEY_HEX: "2af27b538689325cd2def71f6ac8181ca1dded4367309d910fea12de93c79108"

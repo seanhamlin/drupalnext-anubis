@@ -19,8 +19,15 @@ tasks:
         service: cli
         shell: bash
 
+routes:
+  autogenerate:
+    enabled: false
+
 environments:
   main:
+    routes:
+      - anubis:
+          - spicy.seanhamlin.website:
     cronjobs:
       - name: drush hourly cron
         schedule: "M * * * *"
