@@ -19,6 +19,13 @@ bots:
     path_regex: ^/(core|modules|themes|libraries|sites/[^/]+/(files|modules|themes))/.*\.(css|js|map|png|jpe?g|gif|svg|webp|avif|ico|woff2?|ttf|eot|otf)(\?.*)?$
     action: ALLOW
 
+  # Allow the amazee.io-branded Anubis splash assets. Fastly rewrites the
+  # upstream Anubis asset URLs to /anubis-brand/* so the challenge page picks
+  # up our CSS and mascot images instead of the default Techaro ones.
+  - name: anubis-brand-assets
+    path_regex: ^/anubis-brand/.*\.(css|webp|png|svg|woff2?)(\?.*)?$
+    action: ALLOW
+
   # Allow the homepage.
   - name: drupal-homepage
     path_regex: ^/$
