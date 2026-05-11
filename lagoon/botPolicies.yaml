@@ -1,0 +1,28 @@
+## Custom Anubis bot policy.
+##
+## Rules are evaluated top-to-bottom — first match wins. So site-specific ALLOW
+## rules need to come BEFORE the default imports, otherwise the default
+## challenge rules would catch these requests first.
+##
+## Reference: https://github.com/TecharoHQ/anubis/blob/main/data/botPolicies.yaml
+
+bots:
+  # Allow Drupal's aggregated CSS/JS bundles. These are generated on the fly
+  # and served straight from disk by nginx, so they never hit PHP.
+  - name: drupal-aggregated-assets
+    path_regex: ^/sites/[^/]+/files/
+    action: ALLOW
+
+  # Allow static assets served from Drupal's core, modules, themes and
+  # third-party libraries (uncompiled CSS/JS, images, fonts, source maps).
+  - name: drupal-static-assets
+    path_regex: ^/(core|modules|themes|libraries|sites/[^/]+/(files|modules|themes))/.*\.(css|js|map|png|jpe?g|gif|svg|webp|avif|ico|woff2?|ttf|eot|otf)(\?.*)?$
+    action: ALLOW
+
+  # Allow the homepage.
+  - name: drupal-homepage
+    path_regex: ^/$
+    action: ALLOW
+
+  # ---- Defaults below this line ----
+  - import: (data)/meta/default-config.yaml

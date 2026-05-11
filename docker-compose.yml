@@ -76,6 +76,7 @@ services:
       OG_CACHE_CONSIDER_HOST: "true"
       OG_EXPIRY_TIME: "24h"
       OG_PASSTHROUGH: "true"
+      POLICY_FNAME: "/data/cfg/botPolicies.yaml"
       SLOG_LEVEL: "debug"
       TARGET: "http://nginx:8080"
       USE_REMOTE_ADDRESS: "true"
