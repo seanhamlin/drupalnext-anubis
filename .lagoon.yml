@@ -33,3 +33,5 @@ environments:
         schedule: "M * * * *"
         command: drush cron
         service: cli
+  dev:
+    autogenerateRoutes: true
